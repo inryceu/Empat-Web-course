@@ -21,9 +21,10 @@
   --btn-padding-accent: 8px 16px;
   --btn-width-primary: 180px;
   --btn-height-accent: 60px;
+  --nav-btn-height-accent: 48px;
   --btn-width-accent: 208px;
 
-  --hero-height-mobile: 250px;
+  --hero-height-mobile: 270px;
   --hero-height-desktop: 450px;
   --hero-ring-offset-mobile: -80px;
 
@@ -65,10 +66,10 @@ a {
 }
 
 .btn-accent {
-  height: var(--btn-height-accent);
-  width: var(--btn-width-accent);
-  max-width: 25%;
-  font-size: 28px;
+  height: var(--nav-btn-height-accent);
+  width: var(--nav-btn-width-accent);
+  min-width: 80px;
+  font-size: 12px;
   background: var(--color-accent);
   color: #000;
   padding: var(--btn-padding-accent);
@@ -94,6 +95,8 @@ a {
   font-weight: 700;
   display: flex;
   align-items: center;
+  gap: 8px;
+  margin-right: 24px;
 }
 
 .nav {
@@ -127,14 +130,14 @@ a {
   font-size: 32px;
   line-height: 1.1;
   margin-bottom: 16px;
-  max-width: 740px;
+  max-width: 200px;
 }
 
 .hero p {
   font-size: 14px;
   color: var(--color-muted);
   margin-bottom: 24px;
-  max-width: 740px;
+  max-width: 200px;
 }
 
 .hero-visual {
@@ -224,11 +227,20 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: var(--container-padding-mobile);
+  margin-right: var(--container-padding-mobile);
   gap: var(--gap-sm);
 }
 
+.cta-inner button {
+  height: var(--btn-height-accent);
+  width: var(--btn-width-accent);
+  font-size: 14px;
+}
+
 .cta h2 {
-  font-size: 28px;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .desktop-only {
@@ -259,6 +271,10 @@ a {
     gap: var(--gap-lg);
   }
 
+  .btn-accent {
+    font-size: 21px;
+  }
+
   .hero {
     flex-direction: row;
     justify-content: space-between;
@@ -270,6 +286,11 @@ a {
   .hero h1 {
     font-size: 65px;
     font-weight: 700;
+    min-width: 740px;
+  }
+
+  .hero p { 
+    min-width: 740px;
   }
 
   .hero-visual {
@@ -291,5 +312,15 @@ a {
     font-size: 45px;
     font-weight: 700;
     justify-content: space-between;
+  }
+
+  .cta h2 {
+    font-size: 45px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .cta-inner button {
+    font-size: 28px;
   }
 }
