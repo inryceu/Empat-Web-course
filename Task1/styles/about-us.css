@@ -3,7 +3,7 @@
     --color-text: #ffffff;
     --color-border: #5d3fd3;
     --font-main: 'Space Grotesk', sans-serif;
-    --container-width: 1200px;
+    --container-width: 1440px;
     
     --ring-size-mobile: 270px;
     --ring-size-desktop: 450px;
@@ -34,8 +34,11 @@ body {
     position: relative;
     min-height: var(--ring-size-mobile);
     display: flex;
-    align-items: center;
-    overflow: hidden; 
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
+    padding-left: 200px;
+    overflow: hidden;
 }
 
 .hero-visual {
@@ -43,16 +46,13 @@ body {
     top: 0;
     left: -80px; 
     pointer-events: none;
-    
     width: var(--ring-size-mobile);
     height: var(--ring-size-mobile);
 }
 
 .about-title {
-    position: relative;
     z-index: 2;
-    max-width: 100%;
-    text-align: center;
+    text-align: left;
 }
 
 .about-title h1 {
@@ -70,9 +70,11 @@ body {
 }
 
 .mission {
-    padding: 40px 0;
+    padding: 0 20px;
+    padding-top: 180px;
     position: relative;
     z-index: 2;
+    width: 100%;
 }
 
 .mission h2 {
@@ -91,6 +93,10 @@ body {
     font-size: 15px;
     color: #e0e0e0;
     line-height: 1.7;
+}
+
+.team {
+    padding: 40px 0;
 }
 
 .team h2 {
@@ -133,7 +139,7 @@ body {
 .desktop-only { display: none; }
 .mobile-only { display: flex; }
 
-@media (min-width: 800px) {
+@media (min-width: 860px) {
     .desktop-only { display: flex; }
     .mobile-only { display: none; }
 
@@ -144,14 +150,14 @@ body {
     }
 
     .about-hero {
-        height: var(--ring-size-desktop);
+        padding-left: 250px;
+        flex-direction: column;
     }
 
     .about-title {
-        padding-left: 0;
+        padding-left: 20px;
         margin-top: 20px;
         text-align: left;
-        max-width: 700px;
     }
 
     .subtitle {
@@ -160,6 +166,10 @@ body {
 
     .about-title h1 {
         font-size: 65px;
+    }
+
+    .mission {
+        padding: 40px 0;
     }
 
     .mission-grid {
@@ -171,8 +181,34 @@ body {
         grid-template-columns: repeat(3, 1fr);
         gap: 40px;
     }
-    
+
     .team h2 {
         text-align: left;
+    }
+}
+
+@media (max-width: 860px) {
+    .mission {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        margin-left: 0;
+        position: relative;
+    }
+
+    .hero-visual {
+        display: block;
+        left: -80px;
+        width: var(--ring-size-mobile);
+        height: var(--ring-size-mobile);
+        z-index: 1;
+    }
+
+    .about-hero {
+        padding-left: 0;
+    }
+
+    .about-title {
+        padding-left: 200px;
     }
 }

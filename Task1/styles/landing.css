@@ -76,6 +76,7 @@ a {
 }
 
 .hero-content {
+  padding-left: 10px;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -85,14 +86,16 @@ a {
   font-size: 32px;
   line-height: 1.1;
   margin-bottom: 16px;
-  max-width: 200px;
+  max-width: 300px;
+  padding-right: 100px;
 }
 
 .hero p {
   font-size: 14px;
   color: var(--color-muted);
   margin-bottom: 24px;
-  max-width: 200px;
+  max-width: 300px;
+  padding-right: 100px;
 }
 
 .hero-visual {
@@ -106,6 +109,7 @@ a {
 
 .priorities {
   margin: 0 30px;
+  margin-top: 20px;
 }
 
 .priorities h2 {
@@ -187,7 +191,7 @@ a {
 .desktop-only { display: none; }
 .mobile-only { display: block; }
 
-@media (min-width: 800px) {
+@media (min-width: 860px) {
   .container {
     max-width: 1440px;
     margin: 0 auto;
@@ -212,6 +216,10 @@ a {
   }
 
   .hero p { min-width: 740px; }
+
+  .hero-content {
+    padding-left: 30px;
+  }
 
   .hero-visual {
     width: var(--hero-height-desktop);
