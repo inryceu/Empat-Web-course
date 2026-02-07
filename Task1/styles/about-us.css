@@ -1,7 +1,7 @@
 :root {
     --color-bg: #0b0b0b;
     --color-text: #ffffff;
-    --color-border: #5d3fd3;
+    --color-border: #63367B;
     --font-main: 'Space Grotesk', sans-serif;
     --container-width: 1440px;
     
@@ -78,8 +78,8 @@ body {
 }
 
 .mission h2 {
-    font-size: 28px;
-    margin-bottom: 30px;
+    font-size: 32px;
+    padding-bottom: 8px;
     font-weight: 700;
 }
 
@@ -90,7 +90,8 @@ body {
 }
 
 .mission-grid p {
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: 600;
     color: #e0e0e0;
     line-height: 1.7;
 }
@@ -101,22 +102,26 @@ body {
 
 .team h2 {
     font-size: 32px;
-    margin-bottom: 40px;
+    padding-bottom: 12px;
     text-align: center;
 }
 
 .team-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
 }
 
 .team-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
 .member-img {
-    border: 2px solid var(--color-border);
+    border: 5px solid var(--color-border);
     border-radius: 20px;
     overflow: hidden;
     aspect-ratio: 2 / 3;
@@ -132,14 +137,14 @@ body {
 }
 
 .team-card h3 {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 32px;
+    font-weight: 700;
 }
 
 .desktop-only { display: none; }
 .mobile-only { display: flex; }
 
-@media (min-width: 860px) {
+@media (min-width: 861px) {
     .desktop-only { display: flex; }
     .mobile-only { display: none; }
 
@@ -172,18 +177,29 @@ body {
         padding: 40px 0;
     }
 
+    .mission h2 {
+        font-size: 50px;
+    }
+
     .mission-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 40px;
     }
 
     .team-grid {
+        display: grid;
+        align-items: flex-start;
         grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
+        gap: 24px;
+    }
+
+    .team-card {
+        min-height: 490px;
     }
 
     .team h2 {
-        text-align: left;
+        font-size: 50px;
+        text-align: center;
     }
 }
 

@@ -4,7 +4,7 @@
 
 .footer {
   border-top: 2px solid #fff;
-  padding: 60px 20px;
+  padding: 60px 32px;
 }
 
 .footer-grid {
@@ -14,15 +14,16 @@
 }
 
 .footer-item h3 {
-  font-size: 18px;
-  margin-bottom: 15px;
+  font-size: 14px;
+  margin-bottom: 8px;
   font-weight: 700;
 }
 
 .footer-item p {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--muted);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-weight: 600;
 }
 
 .social-col {
@@ -61,8 +62,8 @@
 }
 
 @media (min-width: 800px) {
-    .footer {
-    padding: 20px 80px;
+  .footer {
+    padding: 20px;
   }
 
   .footer-grid {
