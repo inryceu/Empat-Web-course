@@ -19,7 +19,8 @@
 
     <h4>Тест додавання (POST)</h4>
     <form action="{{ route('products.store') }}" method="POST">
-        @csrf <input type="hidden" name="name" value="{{ $product['name'] }}_copy">
+        @csrf
+        <input type="hidden" name="name" value="{{ $product['name'] }}_copy">
         <input type="hidden" name="price" value="{{ $product['price'] + 50 }}">
         <button type="submit">Створити копію (+50$)</button>
     </form>
@@ -27,12 +28,13 @@
     <br>
 
     <h4>Тест видалення (DELETE)</h4>
-    <form action="{{ route('products.destroy', ['name' => $product['name']]) }}" method="POST">
+    <form action="{{ route('products.destroy', ['id' => $product['id']]) }}" method="POST">
         @csrf
-        @method('DELETE') <button type="submit" style="color: red;">Видалити цей товар</button>
+        @method('DELETE')
+        <button type="submit" style="color: red;">Видалити цей товар</button>
     </form>
 </div>
 
 <br>
-<a href="{{ route('home') }}">← Повернутися до списку</a>
+<a href="{{ route('products.index') }}">← Повернутися до списку</a>
 @endsection

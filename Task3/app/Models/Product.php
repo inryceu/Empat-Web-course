@@ -4,10 +4,18 @@ namespace App\Models;
 
 class Product
 {
+    private static $id = 2;
+
+    public static function getId()
+    {
+        self::$id++;
+        return self::$id;
+    }
+
     private static $items = [
-        ["name" => "some_name", "price" => 100, "is_available" => true],
-        ["name" => "some_name2", "price" => 200, "is_available" => true],
-        ["name" => "some_name3", "price" => 300, "is_available" => false]
+        ["id" => 0, "name" => "some_name", "price" => 100, "is_available" => true],
+        ["id" => 1, "name" => "some_name2", "price" => 200, "is_available" => true],
+        ["id" => 2, "name" => "some_name3", "price" => 300, "is_available" => false]
     ];
 
     public static function getAll()
@@ -35,8 +43,18 @@ class Product
         return null;
     }
 
+    public static function findById($id)
+    {
+        foreach (self::$items as $item) {
+            if ((int)$item["id"] === (int)$id) return $item;
+        }
+
+        return null;
+    }
+
     public static function addItem($item)
     {
+        $item['id'] = self::getId();
         self::$items[] = $item;
     }
 
@@ -45,6 +63,15 @@ class Product
         $res = [];
         foreach (self::$items as $item) {
             if ($item["name"] != $name) $res[] = $item;
+        }
+        self::$items = $res;
+    }
+
+    public static function deleteById($id)
+    {
+        $res = [];
+        foreach (self::$items as $item) {
+            if ((int)$item["id"] !== (int)$id) $res[] = $item;
         }
         self::$items = $res;
     }
