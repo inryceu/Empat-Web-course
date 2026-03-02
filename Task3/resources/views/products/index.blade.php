@@ -3,11 +3,16 @@
 @section('content')
 <h1>Список товарів</h1>
 
+<form action="{{ route('products.search') }}" method="GET" style="margin-bottom: 20px;">
+    <input type="text" name="name" value="{{ request('name') }}" placeholder="Пошук за назвою...">
+    <button type="submit">Знайти</button>
+</form>
+
 @if(count($products) > 0)
 <ul>
     @foreach($products as $product)
     <li style="margin-bottom: 10px;">
-        <a href="{{ route('products.search', ['name' => $product['name']]) }}">
+        <a href="{{ route('products.show', ['id' => $product['id']]) }}">
             <strong>{{ $product['name'] }}</strong>
         </a>
         — {{ $product['price'] }}$

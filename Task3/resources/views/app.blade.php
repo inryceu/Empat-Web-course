@@ -26,18 +26,33 @@
         .container {
             max-width: 800px;
         }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 
 <body>
 
     <nav>
-        <a href="{{ route('home') }}">Усі товари</a>
+        <a href="{{ route('products.index') }}">Усі товари</a>
         <a href="{{ route('products.available') }}">В наявності</a>
-        <a href="{{ route('products.form') }}">Створити новий товар</a>
+        <a href="{{ route('products.create') }}">Створити новий товар</a>
     </nav>
 
     <div class="container">
+        @if(session('success'))
+        <div class="alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+
         @yield('content')
     </div>
 

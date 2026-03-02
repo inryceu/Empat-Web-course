@@ -4,34 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Http\Requests\StoreProductRequest;
 
 class ProductController extends Controller
 {
-    public function allProducts()
+    public function index()
     {
         $products = Product::getAll();
 
         return view("products.index", ["products" => $products]);
     }
 
-    public function availableProducts()
+    public function available()
     {
         $available = Product::getAvailable();
 
         return view("products.index", ["products" => $available]);
     }
 
-    public function addProduct(Request $request)
+    public function create()
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric|gt:0',
-        ], [
-            'name.required' => 'Поле "Назва товару" не може бути порожньою.',
-            'price.required' => 'Поле "Ціна" є обов\'язковим.',
-            'price.numeric' => 'Ціна має бути числовим значенням.',
-            'price.gt' => 'Ціна повинна бути більшою за нуль.',
-        ]);
+        return view("products.create");
+    }
+
+    public function store(StoreProductRequest $request)
+    {
+        $validatedData = $request->validated();
 
         $product = [
             "name" => $validatedData['name'],
@@ -41,30 +39,36 @@ class ProductController extends Controller
 
         Product::addItem($product);
 
-        return "Item " . $validatedData['name'] . " with price of " . $validatedData['price'] . " was added";
+        return redirect()->route('products.index')
+            ->with('success', "Item {$validatedData['name']} with price of {$validatedData['price']} was added");
     }
 
-    public function findByName(Request $request)
+    public function show($id)
     {
-        $name = $request->input("name");
+        $product = Product::findById($id);
 
-        if (!$name) $product = Product::getAll()[0];
-        else $product = Product::findByName($name);
-
-        if (!$product) abort(404, "Product not found");
+        if (!$product) {
+            abort(404, "Product not found");
+        }
 
         return view("products.show", ["product" => $product]);
     }
 
-    public function deleteByName($name)
+    public function search(Request $request)
     {
-        Product::deleteByName($name);
+        $name = $request->query("name");
+        $product = Product::findByName($name);
 
-        return "Item " . $name . " was deleted";
+        $products = $product ? [$product] : [];
+
+        return view("products.index", ["products" => $products]);
     }
 
-    public function showForm()
+    public function destroy($id)
     {
-        return view("products.create");
+        Product::deleteById($id);
+
+        return redirect()->route('products.index')
+            ->with('success', "Item was deleted");
     }
 }
