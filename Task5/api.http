@@ -1,0 +1,65 @@
+@baseUrl = http://127.0.0.1:8000/api
+@token = 5|UGsRKofJdAt0SuKDzHV6zT11uCdBmlStcEKCTrUG1b325d25
+
+###
+GET {{baseUrl}}/categories
+Accept: application/json
+
+###
+POST {{baseUrl}}/register
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Maluiev Pavlo",
+    "email": "pavel.maluev@gmail.com",
+    "password": "qwerty123",
+    "password_confirmation": "qwerty123"
+}
+
+###
+POST {{baseUrl}}/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "test@example.com",
+    "password": "password123"
+}
+
+###
+GET {{baseUrl}}/categories/1/products
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+POST {{baseUrl}}/categories
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Нова крута категорія"
+}
+
+###
+PATCH {{baseUrl}}/categories/1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Оновлена назва категорії"
+}
+
+###
+POST {{baseUrl}}/products
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Новий супер товар",
+    "price": 999.99,
+    "category_id": 1
+}
